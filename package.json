@@ -11,7 +11,16 @@
     "fmt:check": "prettier --check .",
     "lint": "eslint ."
   },
-  "keywords": ["cortex", "plugin", "cortex-plugin", "esm", "diagram", "mermaid", "flowchart", "architecture"],
+  "keywords": [
+    "cortex",
+    "plugin",
+    "cortex-plugin",
+    "esm",
+    "diagram",
+    "mermaid",
+    "flowchart",
+    "architecture"
+  ],
   "author": "CortexPrism",
   "license": "MIT",
   "repository": {
