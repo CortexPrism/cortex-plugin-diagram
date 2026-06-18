@@ -402,6 +402,7 @@ const diagram_list_types: Tool = {
 };
 
 export async function onLoad(ctx: PluginContext): Promise<void> {
+  ctx.logger.info(`[cortex-plugin-diagram] Loaded`);
   config = await ctx.config.get();
 }
 

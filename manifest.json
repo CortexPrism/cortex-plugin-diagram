@@ -1,0 +1,247 @@
+{
+  "name": "cortex-plugin-diagram",
+  "version": "1.0.2",
+  "description": "Generate flowcharts, sequence diagrams, architecture diagrams, mind maps from natural language",
+  "kind": "esm",
+  "entryPoint": "mod.ts",
+  "runtime": "deno",
+  "author": "CortexPrism",
+  "license": "MIT",
+  "repository": "https://github.com/CortexPrism/cortex-plugin-diagram",
+  "capabilities": [
+    "tools",
+    "fs:write"
+  ],
+  "tools": [
+    {
+      "name": "diagram_generate",
+      "description": "Generate diagram from description",
+      "params": [
+        {
+          "name": "description",
+          "type": "string",
+          "description": "Natural language description of the diagram",
+          "required": true
+        },
+        {
+          "name": "diagram_type",
+          "type": "string",
+          "description": "Type of diagram",
+          "required": true,
+          "enum": [
+            "flowchart",
+            "sequence",
+            "class",
+            "er",
+            "mindmap",
+            "gantt",
+            "architecture",
+            "pie"
+          ]
+        },
+        {
+          "name": "output_format",
+          "type": "string",
+          "description": "Output format",
+          "default": "mermaid",
+          "enum": [
+            "mermaid",
+            "png",
+            "svg",
+            "excalidraw"
+          ]
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "description": "Diagram title",
+          "required": false
+        }
+      ]
+    },
+    {
+      "name": "diagram_from_code",
+      "description": "Generate diagram from code structure",
+      "params": [
+        {
+          "name": "code",
+          "type": "string",
+          "description": "Source code to analyze",
+          "required": true
+        },
+        {
+          "name": "diagram_type",
+          "type": "string",
+          "description": "Type of diagram",
+          "required": true,
+          "enum": [
+            "class",
+            "sequence",
+            "architecture"
+          ]
+        },
+        {
+          "name": "language",
+          "type": "string",
+          "description": "Programming language of the code",
+          "required": true
+        }
+      ]
+    },
+    {
+      "name": "diagram_edit",
+      "description": "Edit existing diagram via natural language",
+      "params": [
+        {
+          "name": "diagram_source",
+          "type": "string",
+          "description": "Mermaid or Excalidraw source",
+          "required": true
+        },
+        {
+          "name": "edits",
+          "type": "string",
+          "description": "Natural language description of changes",
+          "required": true
+        }
+      ]
+    },
+    {
+      "name": "diagram_export",
+      "description": "Export diagram to different format",
+      "params": [
+        {
+          "name": "diagram_source",
+          "type": "string",
+          "description": "Diagram source code",
+          "required": true
+        },
+        {
+          "name": "format",
+          "type": "string",
+          "description": "Output format",
+          "required": true,
+          "enum": [
+            "png",
+            "svg",
+            "pdf",
+            "mermaid",
+            "excalidraw"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "diagram_list_types",
+      "description": "List supported diagram types with descriptions",
+      "params": []
+    }
+  ],
+  "ui": {
+    "settings": [
+      {
+        "section": "General",
+        "fields": [
+          {
+            "key": "defaultType",
+            "label": "Default Diagram Type",
+            "type": "select",
+            "description": "Default diagram type",
+            "default": "flowchart",
+            "enum": [
+              {
+                "label": "Flowchart",
+                "value": "flowchart"
+              },
+              {
+                "label": "Sequence",
+                "value": "sequence"
+              },
+              {
+                "label": "Class Diagram",
+                "value": "class"
+              },
+              {
+                "label": "ER Diagram",
+                "value": "er"
+              },
+              {
+                "label": "Mind Map",
+                "value": "mindmap"
+              },
+              {
+                "label": "Gantt Chart",
+                "value": "gantt"
+              },
+              {
+                "label": "Architecture",
+                "value": "architecture"
+              },
+              {
+                "label": "Pie Chart",
+                "value": "pie"
+              }
+            ]
+          },
+          {
+            "key": "defaultFormat",
+            "label": "Default Format",
+            "type": "select",
+            "description": "Default output format",
+            "default": "mermaid",
+            "enum": [
+              {
+                "label": "Mermaid",
+                "value": "mermaid"
+              },
+              {
+                "label": "PNG",
+                "value": "png"
+              },
+              {
+                "label": "SVG",
+                "value": "svg"
+              }
+            ]
+          },
+          {
+            "key": "theme",
+            "label": "Theme",
+            "type": "select",
+            "description": "Diagram color theme",
+            "default": "default",
+            "enum": [
+              {
+                "label": "Default",
+                "value": "default"
+              },
+              {
+                "label": "Forest",
+                "value": "forest"
+              },
+              {
+                "label": "Dark",
+                "value": "dark"
+              },
+              {
+                "label": "Neutral",
+                "value": "neutral"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "dependencies": {},
+  "peerDependencies": {
+    "cortex": ">=1.0.0"
+  },
+  "aiDisclosure": {
+    "tools": [
+      "Claude Code (Anthropic)"
+    ],
+    "humanReview": true
+  },
+  "homepage": "https://github.com/CortexPrism/cortex-plugin-diagram"
+}
