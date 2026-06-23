@@ -1,4 +1,4 @@
-import type { PluginContext, Tool, ToolCallResult, ToolContext } from './types.ts';
+import type { PluginContext, Tool, ToolCallResult } from 'cortex/plugins';
 
 let config: Record<string, unknown> = {};
 
@@ -122,7 +122,7 @@ const diagram_generate: Tool = {
     ],
     capabilities: ['fs:write'],
   },
-  execute: async (args: Record<string, unknown>, _ctx: ToolContext): Promise<ToolCallResult> => {
+  execute: async (args: Record<string, unknown>, _ctx: PluginContext): Promise<ToolCallResult> => {
     const start = Date.now();
     try {
       const description = args.description;
@@ -195,7 +195,7 @@ const diagram_from_code: Tool = {
     ],
     capabilities: [],
   },
-  execute: async (args: Record<string, unknown>, _ctx: ToolContext): Promise<ToolCallResult> => {
+  execute: async (args: Record<string, unknown>, _ctx: PluginContext): Promise<ToolCallResult> => {
     const start = Date.now();
     try {
       const code = args.code;
@@ -261,7 +261,7 @@ const diagram_edit: Tool = {
     ],
     capabilities: [],
   },
-  execute: async (args: Record<string, unknown>, _ctx: ToolContext): Promise<ToolCallResult> => {
+  execute: async (args: Record<string, unknown>, _ctx: PluginContext): Promise<ToolCallResult> => {
     const start = Date.now();
     try {
       const diagram_source = args.diagram_source;
@@ -327,7 +327,7 @@ const diagram_export: Tool = {
     ],
     capabilities: ['fs:write'],
   },
-  execute: async (args: Record<string, unknown>, _ctx: ToolContext): Promise<ToolCallResult> => {
+  execute: async (args: Record<string, unknown>, _ctx: PluginContext): Promise<ToolCallResult> => {
     const start = Date.now();
     try {
       const diagram_source = args.diagram_source;
@@ -377,7 +377,7 @@ const diagram_list_types: Tool = {
     params: [],
     capabilities: [],
   },
-  execute: async (_args: Record<string, unknown>, _ctx: ToolContext): Promise<ToolCallResult> => {
+  execute: async (_args: Record<string, unknown>, _ctx: PluginContext): Promise<ToolCallResult> => {
     const start = Date.now();
     try {
       const result = Object.entries(DIAGRAM_TYPE_DESCRIPTIONS)

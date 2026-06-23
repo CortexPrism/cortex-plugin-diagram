@@ -1,6 +1,6 @@
 {
   "name": "cortex-plugin-diagram",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Generate flowcharts, sequence diagrams, architecture diagrams, mind maps from natural language",
   "kind": "esm",
   "entryPoint": "mod.ts",
@@ -43,7 +43,7 @@
           "name": "output_format",
           "type": "string",
           "description": "Output format",
-          "default": "mermaid",
+          "defaultValue": "mermaid",
           "enum": [
             "mermaid",
             "png",
@@ -147,8 +147,8 @@
             "label": "Default Diagram Type",
             "type": "select",
             "description": "Default diagram type",
-            "default": "flowchart",
-            "enum": [
+            "defaultValue": "flowchart",
+            "options": [
               {
                 "label": "Flowchart",
                 "value": "flowchart"
@@ -188,8 +188,8 @@
             "label": "Default Format",
             "type": "select",
             "description": "Default output format",
-            "default": "mermaid",
-            "enum": [
+            "defaultValue": "mermaid",
+            "options": [
               {
                 "label": "Mermaid",
                 "value": "mermaid"
@@ -209,8 +209,8 @@
             "label": "Theme",
             "type": "select",
             "description": "Diagram color theme",
-            "default": "default",
-            "enum": [
+            "defaultValue": "default",
+            "options": [
               {
                 "label": "Default",
                 "value": "default"
@@ -235,7 +235,7 @@
   },
   "dependencies": {},
   "peerDependencies": {
-    "cortex": ">=1.0.0"
+    "cortex": ">=0.51.0"
   },
   "aiDisclosure": {
     "tools": [
